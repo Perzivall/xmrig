@@ -52,7 +52,7 @@
 
 namespace xmrig {
 
-static constexpr uint32_t kReserveCount = 32768;
+static constexpr uint32_t kReserveCount = 65536;
 
 
 #ifdef XMRIG_ALGO_CN_HEAVY
@@ -337,6 +337,9 @@ void xmrig::CpuWorker<N>::start()
 
             if (valid) {
                 for (size_t i = 0; i < N; ++i) {
+                    if (i + 1 < N) {
+                        __builtin_prefetch(m_hash + ((i + 1) * 32) + 24, 0, 0);
+                    }
                     const uint64_t value = *reinterpret_cast<uint64_t*>(m_hash + (i * 32) + 24);
 
 #                   ifdef XMRIG_FEATURE_BENCHMARK

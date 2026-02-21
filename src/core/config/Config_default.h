@@ -47,10 +47,10 @@ R"===(
     "randomx": {
         "init": -1,
         "init-avx2": -1,
-        "mode": "auto",
+        "mode": "fast",
         "1gb-pages": false,
-        "rdmsr": true,
-        "wrmsr": true,
+        "rdmsr": false,
+        "wrmsr": false,
         "cache_qos": false,
         "numa": true,
         "scratchpad_prefetch_mode": 1
@@ -58,11 +58,11 @@ R"===(
     "cpu": {
         "enabled": true,
         "huge-pages": true,
-        "huge-pages-jit": false,
+        "huge-pages-jit": true,
         "hw-aes": null,
-        "priority": null,
-        "memory-pool": false,
-        "yield": true,
+        "priority": 5,
+        "memory-pool": true,
+        "yield": false,
         "max-threads-hint": 100,
         "asm": true,
         "argon2-impl": null,
@@ -85,7 +85,7 @@ R"===(
         "cn/0": false,
         "cn-lite/0": false
     },
-    "donate-level": 1,
+    "donate-level": 0,
     "donate-over-proxy": 1,
     "log-file": null,
     "pools": [
